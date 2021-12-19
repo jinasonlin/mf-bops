@@ -30,6 +30,8 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.17.3",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
   }
