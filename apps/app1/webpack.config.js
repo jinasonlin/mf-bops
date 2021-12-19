@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'http://localhost:3002/',
     clean: true,
   },
   resolve: {
@@ -36,24 +36,25 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'main',
-      remotes: {
-        app1: 'app1@http://localhost:3002/remoteEntry.js',
+      name: 'app1',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './App': './src/App',
       },
-      shared: {
-        react: {
-          singleton: true,
-        },
-        'react-dom': {
-          singleton: true,
-        },
-      },
+      // shared: {
+      //   react: {
+      //     singleton: true,
+      //   },
+      //   'react-dom': {
+      //     singleton: true,
+      //   },
+      // },
     }),
     new HtmlWebpackPlugin({
       template: './src/view/index.html',
     }),
   ],
   devServer: {
-    port: 3001,
+    port: 3002,
   },
 };

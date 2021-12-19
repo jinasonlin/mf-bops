@@ -1,0 +1,9 @@
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-layout-header,
+.ant-layout-footer {
+  color: #fff;
+  background: #7dbcea;
+}
