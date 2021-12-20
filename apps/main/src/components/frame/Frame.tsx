@@ -96,15 +96,12 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
   }
 
   private setMenus = () => {
-    const { hasMainMenu } = this.props;
+    const { hasMainMenu, menus, loginName, userName } = this.props;
     const {
       location: { pathname },
     } = window;
-    const finalMenu = this.props.menus;
-    const loginName = this.props.loginName;
-    const userName = this.props.userName;
 
-    const { navMenus, subMenus } = getNavMenu(finalMenu!);
+    const { navMenus, subMenus } = getNavMenu(menus!);
     const navMenuKeys = getNavMenuKeys(navMenus);
     const navMenuIndex = getNavMenuIndex(navMenuKeys, pathname);
     const hasNav = navMenuIndex !== undefined;
@@ -200,7 +197,7 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
     }
 
     return (
-      <Layout className='frame'>
+      <Layout className="frame">
         <Layout className={`${prefix}-row`}>
           <div
             style={{

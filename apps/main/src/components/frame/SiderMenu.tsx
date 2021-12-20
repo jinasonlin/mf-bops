@@ -119,10 +119,6 @@ class SiderMenu extends PureComponent<PropsIF, StateIF> {
     }
 
     const CurrentMenuInfo = selectedMaps.find(item => pathname.startsWith(item.to!)) || {};
-    window.CurrentMenuInfo = CurrentMenuInfo;
-    window._XFLOW_ && window._XFLOW_.setExtendsInfo({
-      menu: CurrentMenuInfo.name,
-    });
 
     if (open) {
       state.openKeys = [];

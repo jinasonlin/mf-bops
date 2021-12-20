@@ -38,7 +38,7 @@ function Nav(props: PropsIF) {
 
   const calcMenus = useMemo(() => {
     return menus.map((menu: any) => {
-      if (appsConfig.find(app => app.activeRule === menu.to)) {
+      if (appsConfig.find((app) => app.activeRule === menu.to)) {
         menu.isMfeModule = true;
       }
       return menu;
@@ -63,19 +63,21 @@ function Nav(props: PropsIF) {
           });
           return (
             <li key={to} className={cls} onClick={handleClickNavItem}>
-              {// eslint-disable-next-line multiline-ternary
-              isMfeModule && RouterLink ? (
-                <RouterLink to={to}>
-                  <Icon type={icon || Icons[name]} />
-                  <h2>{name}</h2>
-                </RouterLink>
-              ) : (
-                <a href={to}>
-                  <Icon type={icon || Icons[name]} />
-                  <h2>{name}</h2>
-                </a>
-                // eslint-disable-next-line
-              )}
+              {
+                isMfeModule && RouterLink
+                  ? (
+                    <RouterLink to={to}>
+                      <Icon type={icon || Icons[name]} />
+                      <h2>{name}</h2>
+                    </RouterLink>
+                  )
+                  : (
+                    <a href={to}>
+                      <Icon type={icon || Icons[name]} />
+                      <h2>{name}</h2>
+                    </a>
+                  )
+              }
             </li>
           );
         })}
