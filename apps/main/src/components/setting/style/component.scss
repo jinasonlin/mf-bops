@@ -1,0 +1,70 @@
+.frame-layout-setting {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 277px;
+  padding-left: 24px;
+  transform: translateX(300px);
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background: #fff;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+
+  &-show {
+    transform: translateX(0);
+  }
+
+  h2,
+  h3 {
+    color: #343434;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 16px;
+    line-height: 56px;
+
+    > .frame-icon {
+      width: 14px;
+      height: 14px;
+      color: #616161;
+      cursor: pointer;
+      margin-left: 144px;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: #343434;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 14px;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+
+  &-background {
+    position: relative;
+    display: inline-block;
+    margin-right: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &-selected {
+      &::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 36px;
+        height: 36px;
+        border: 1px solid #00bc70;
+        border-radius: 50%;
+      }
+    }
+  }
+}

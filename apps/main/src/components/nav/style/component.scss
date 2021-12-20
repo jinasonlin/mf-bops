@@ -1,0 +1,80 @@
+$theme: #00bc70;
+
+.frame-layout-sider-nav {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  z-index: 3;
+  width: 57px;
+  height: calc(100vh - 56px);
+  padding: 16px 0;
+  // background-color: #f2f2f2;
+  background-color: #fff;
+  border-right: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
+  transition: width 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-delay: 0.25s;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  li {
+    width: 266px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 19px;
+    overflow: hidden;
+    border-radius: 0 26px 26px 0;
+    transition: all 0.3s ease-in-out;
+
+    a {
+      display: block;
+      color: #616161;
+    }
+
+    &:hover {
+      background-color: #e6e6e6;
+    }
+
+    i {
+      display: inline-block;
+      width: 19px;
+      color: #909090;
+    }
+
+    h2 {
+      display: inline-block;
+      padding-left: 19px;
+      font-weight: normal;
+      font-size: 14px;
+      color: #616161;
+      white-space: nowrap;
+    }
+
+    &.active {
+      &:hover {
+        background-color: #e2eee9;
+      }
+
+      h2 {
+        color: $theme;
+      }
+
+      a {
+        color: $theme;
+      }
+
+      .frame-icon {
+        color: $theme;
+      }
+    }
+  }
+}
+
+.nav-hoverd {
+  width: 277px !important;
+  cursor: pointer !important;
+  border-right: 0 !important;
+}
