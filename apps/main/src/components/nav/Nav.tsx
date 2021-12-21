@@ -1,14 +1,12 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
-import { NavMenuIF, classnames } from '../../utils';
+import React, { memo, useCallback, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { NavMenuIF } from '../../utils';
 import Icon from '../../components/icon';
 
 const prefix = 'frame-layout-sider';
 
 interface PropsIF {
   menus: NavMenuIF[];
-  pathname: string;
-  routerLink: any;
-  handleMenuToggle: (e: boolean) => void;
 }
 
 const Icons: {
@@ -30,25 +28,9 @@ const Icons: {
   健康管理: 'healthManage',
 };
 
-const appsConfig: any[] = [];
-
 function Nav(props: PropsIF) {
-  const { menus, pathname, routerLink: RouterLink, handleMenuToggle } = props;
+  const { menus } = props;
   const [isShowNavTxt, setIsShowNavTxt] = useState(false);
-
-  const calcMenus = useMemo(() => {
-    return menus.map((menu: any) => {
-      if (appsConfig.find((app) => app.activeRule === menu.to)) {
-        menu.isMfeModule = true;
-      }
-      return menu;
-    });
-  }, [menus]);
-
-  const handleClickNavItem = useCallback(() => {
-    handleMenuToggle(false);
-    setIsShowNavTxt(false);
-  }, [handleMenuToggle]);
 
   return (
     <div
@@ -57,28 +39,12 @@ function Nav(props: PropsIF) {
       onMouseLeave={() => setIsShowNavTxt(false)}
     >
       <ul>
-        {calcMenus.map(({ to, name, icon, isMfeModule }) => {
-          const cls = classnames({
-            active: pathname.startsWith(to),
-          });
+        {menus.map(({ to, name, icon }) => {
           return (
-            <li key={to} className={cls} onClick={handleClickNavItem}>
-              {
-                isMfeModule && RouterLink
-                  ? (
-                    <RouterLink to={to}>
-                      <Icon type={icon || Icons[name]} />
-                      <h2>{name}</h2>
-                    </RouterLink>
-                  )
-                  : (
-                    <a href={to}>
-                      <Icon type={icon || Icons[name]} />
-                      <h2>{name}</h2>
-                    </a>
-                  )
-              }
-            </li>
+            <NavLink key={to} to={to} className="nav-link" activeClassName="active">
+              <Icon type={icon || Icons[name]} />
+              <h2>{name}</h2>
+            </NavLink>
           );
         })}
       </ul>

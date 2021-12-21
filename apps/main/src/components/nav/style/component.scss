@@ -20,7 +20,8 @@ $theme: #00bc70;
     display: none;
   }
 
-  li {
+  .nav-link {
+    display: inline-block;
     width: 266px;
     height: 52px;
     line-height: 52px;

@@ -13,7 +13,7 @@ const memus = [
     menuCode: '1',
     url: '/one',
     order: '0',
-    icon: 'healthManage',
+    icon: 'document',
     childrenMenuViewList: [
       {
         menuName: '二级菜单1',

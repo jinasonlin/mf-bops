@@ -1,5 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Content, Header, Layout, Sider } from '../layout';
 import Nav from '../nav';
@@ -17,7 +18,7 @@ import {
 } from '../../utils';
 
 import defaultLogo from '../../assets/logo.svg';
-import SiderMenu, { MenuItemRender } from './SiderMenu';
+import SiderMenu from './SiderMenu';
 
 interface BopsFrameProps {
   container: HTMLElement;
@@ -32,8 +33,6 @@ interface BopsFrameProps {
   logoutUrl?: string;
   logo?: ReactNode;
   className?: string;
-  menuItemRender?: MenuItemRender;
-  routerLink?: any;
 }
 
 interface BopsFrameStates {
@@ -96,6 +95,7 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
   }
 
   private setMenus = () => {
+    console.log('setMenus')
     const { hasMainMenu, menus, loginName, userName } = this.props;
     const {
       location: { pathname },
@@ -167,8 +167,6 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
       logoutUrl,
       logo,
       className = '',
-      menuItemRender,
-      routerLink,
     } = this.props;
     const {
       collapsed,
@@ -198,7 +196,7 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
 
     return (
       <Layout className="frame">
-        <Layout className={`${prefix}-row`}>
+        <Layout row>
           <div
             style={{
               display: 'flex',
@@ -218,23 +216,21 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
               </a>
             </div>
             {hasMainMenu && (
-              <Nav
-                menus={navMenus}
-                pathname={pathname}
-                routerLink={routerLink}
-                handleMenuToggle={this.handleMenuToggle}
-              />
+              <Router>
+                <Nav menus={navMenus} />
+              </Router>
             )}
             {hasSubMenu && (
-              <SiderMenu
-                pathname={pathname}
-                onToggle={this.handleMenuToggle}
-                menus={siderMenus}
-                navMenu={navMenu}
-                hasMainMenu={hasMainMenu}
-                menuItemRender={menuItemRender}
-                collapsed={collapsed}
-              />
+              <Router>
+                <SiderMenu
+                  pathname={pathname}
+                  onToggle={this.handleMenuToggle}
+                  menus={siderMenus}
+                  navMenu={navMenu}
+                  hasMainMenu={hasMainMenu}
+                  collapsed={collapsed}
+                />
+              </Router>
             )}
           </Sider>
           <div className="frame-layout-content">

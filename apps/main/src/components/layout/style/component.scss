@@ -6,7 +6,7 @@ $prefix: frame-layout;
   flex: auto;
   background: #fff;
 
-  &-row {
+  &.row {
     flex-direction: row;
   }
 

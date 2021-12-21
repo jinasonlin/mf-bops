@@ -1,8 +1,7 @@
 import React, { PureComponent, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, SubMenu, Item } from '../menu';
 import { SubMenuIF, NavMenuIF, getSiderMenuKeys, escapeRegExp } from '../../utils';
-
-export type MenuItemRender = (menu?: SubMenuIF) => ReactNode;
 
 interface PropsIF {
   pathname: string;
@@ -10,7 +9,6 @@ interface PropsIF {
   menus: SubMenuIF[];
   navMenu: Partial<NavMenuIF>;
   hasMainMenu?: boolean;
-  menuItemRender?: MenuItemRender;
   collapsed: boolean;
 }
 
@@ -58,18 +56,9 @@ class SiderMenu extends PureComponent<PropsIF, StateIF> {
   }
 
   getMenuItem(menu: SubMenuIF) {
-    const {
-      navMenu: { to },
-      menuItemRender,
-    } = this.props;
-    let corssModule = false;
-    if (to && !menu.to.startsWith(to)) {
-      corssModule = true;
-    }
-
     return (
       <Item key={menu.to} icon={menu.icon} title={menu.name}>
-        {!corssModule && menuItemRender ? menuItemRender(menu) : <a href={menu.to}>{menu.name}</a>}
+        <Link to={menu.to}>{menu.name}</Link>
       </Item>
     );
   }
