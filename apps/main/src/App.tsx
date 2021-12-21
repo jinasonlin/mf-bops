@@ -1,11 +1,12 @@
-import React from 'react';
-import { Layout } from 'antd';
+import { registerApplication, start } from 'single-spa';
+import React, { useEffect, createRef } from 'react';
+// import { Layout } from 'antd';
 import Frame from './components/frame';
-import App1 from 'app1/App';
+// import App1 from 'app1/App';
 
 import './App.css';
 
-const { Content } = Layout;
+// const { Content } = Layout;
 
 const memus = [
   {
@@ -16,15 +17,27 @@ const memus = [
     icon: 'document',
     childrenMenuViewList: [
       {
-        menuName: '二级菜单1',
+        menuName: '二级菜单 avatar',
         menuCode: '1.1',
-        url: '/one/one',
+        url: '/one/avatar',
         order: '0',
       },
       {
-        menuName: '二级菜单2',
+        menuName: '二级菜单 breadcrumb',
         menuCode: '1.2',
-        url: '/one/two',
+        url: '/one/breadcrumb',
+        order: '0',
+      },
+      {
+        menuName: '二级菜单 modal',
+        menuCode: '1.3',
+        url: '/one/modal',
+        order: '0',
+      },
+      {
+        menuName: '二级菜单 steps',
+        menuCode: '1.4',
+        url: '/one/steps',
         order: '0',
       },
     ],
@@ -52,16 +65,31 @@ const memus = [
   },
 ];
 
+const pathPrefix = (prefix: string) => {
+  return function(location: any) {
+    return location.pathname.startsWith(`${prefix}`);
+  }
+}
+
 export default () => {
   console.log('main react', React.version);
 
+  const dom = createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    registerApplication('app1', () => import ('app1/App'), pathPrefix('/one'), { domElement: dom.current })
+
+    start();
+  }, []);
+
   return (
     <Frame userName="linqun" menus={memus}>
-      <Layout>
+      <div ref={dom} />
+      {/* <Layout>
         <Content>
           <App1 />
         </Content>
-      </Layout>
+      </Layout> */}
     </Frame>
   );
 };

@@ -195,6 +195,7 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
     }
 
     return (
+      <Router>
       <Layout className="frame">
         <Layout row>
           <div
@@ -216,12 +217,9 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
               </a>
             </div>
             {hasMainMenu && (
-              <Router>
-                <Nav menus={navMenus} />
-              </Router>
+              <Nav menus={navMenus} />
             )}
             {hasSubMenu && (
-              <Router>
                 <SiderMenu
                   pathname={pathname}
                   onToggle={this.handleMenuToggle}
@@ -230,7 +228,6 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
                   hasMainMenu={hasMainMenu}
                   collapsed={collapsed}
                 />
-              </Router>
             )}
           </Sider>
           <div className="frame-layout-content">
@@ -300,6 +297,7 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
           />
         )}
       </Layout>
+      </Router>
     );
   }
 }

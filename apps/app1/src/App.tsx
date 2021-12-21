@@ -1,49 +1,46 @@
-import React, { useState } from 'react';
-import { Avatar, Modal, Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import singleSpaReact from 'single-spa-react';
+import React, { Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-export default () => {
+const Avatar = lazy(() => import('./components/Avatar'));
+const Breadcrumb = lazy(() => import('./components/Breadcrumb'));
+const Modal = lazy(() => import('./components/Modal'));
+const Steps = lazy(() => import('./components/Steps'));
+
+const App = () => {
   console.log('app1 react', React.version);
 
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   return (
-    <>
-      <div>app1: hello world</div>
-      <div>
-        <Avatar size={64} icon={<UserOutlined />} />
-        <Avatar size="large" icon={<UserOutlined />} />
-        <Avatar icon={<UserOutlined />} />
-        <Avatar size="small" icon={<UserOutlined />} />
-      </div>
-      <div>
-        <Avatar shape="square" size={64} icon={<UserOutlined />} />
-        <Avatar shape="square" size="large" icon={<UserOutlined />} />
-        <Avatar shape="square" icon={<UserOutlined />} />
-        <Avatar shape="square" size="small" icon={<UserOutlined />} />
-      </div>
-      <div>
-        <Button type="primary" onClick={showModal}>
-          Open Modal
-        </Button>
-        <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
-      </div>
-    </>
+    <Suspense fallback={null}>
+      <Router>
+        <Switch>
+          <Route path="/one/avatar">
+            <Avatar />
+          </Route>
+          <Route path="/one/breadcrumb">
+            <Breadcrumb />
+          </Route>
+          <Route path="/one/modal">
+            <Modal />
+          </Route>
+          <Route path="/one/steps">
+            <Steps />
+          </Route>
+        </Switch>
+      </Router>
+    </Suspense>
   );
-}
+};
+
+export default App;
+
+const reactLifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent: App,
+});
+
+export const bootstrap = reactLifecycles.bootstrap;
+export const mount = reactLifecycles.mount;
+export const unmount = reactLifecycles.unmount;

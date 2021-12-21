@@ -14,6 +14,7 @@ importers:
       '@babel/preset-typescript': ^7.16.5
       '@types/react': ^17.0.37
       '@types/react-dom': ^17.0.11
+      '@types/react-router-dom': ^5
       '@webpack-cli/serve': ^1.6.0
       antd: ^4.17.3
       babel-loader: ^8.2.2
@@ -21,7 +22,9 @@ importers:
       html-webpack-plugin: ^5.3.2
       react: ^16.8.2
       react-dom: ^16.8.2
+      react-router-dom: ^5
       serve: ^13.0.2
+      single-spa-react: ^4.6.0
       style-loader: ^3.3.1
       typescript: ^4.5.4
       webpack: ^5.61.0
@@ -32,6 +35,8 @@ importers:
       antd: 4.17.3_react-dom@16.14.0+react@16.14.0
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
+      react-router-dom: 5.3.0_react@16.14.0
+      single-spa-react: 4.6.0_c71603448fee12e2ff1b04d9f4ec5cbd
     devDependencies:
       '@babel/core': 7.15.5
       '@babel/preset-env': 7.16.5_@babel+core@7.15.5
@@ -39,6 +44,7 @@ importers:
       '@babel/preset-typescript': 7.16.5_@babel+core@7.15.5
       '@types/react': 17.0.37
       '@types/react-dom': 17.0.11
+      '@types/react-router-dom': 5.3.2
       '@webpack-cli/serve': 1.6.0_69695c7c9cf22b2285138f704ba481b9
       babel-loader: 8.2.2_c0ab37bec51cbd77e12ee57a087c5635
       css-loader: 6.5.1_webpack@5.61.0
@@ -70,6 +76,7 @@ importers:
       sass: ^1.45.0
       sass-loader: ^12.4.0
       serve: ^13.0.2
+      single-spa: ^5.9.3
       style-loader: ^3.3.1
       typescript: ^4.5.4
       url-loader: ^4.1.1
@@ -81,6 +88,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-router-dom: 5.3.0_react@17.0.2
+      single-spa: 5.9.3
     devDependencies:
       '@babel/core': 7.15.5
       '@babel/preset-env': 7.16.5_@babel+core@7.15.5
@@ -3490,6 +3498,18 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /mini-create-react-context/0.4.1_prop-types@15.7.2+react@16.14.0:
+    resolution: {integrity: sha512-YWCYEmd5CQeHGSAKrYvXgmzzkrvssZcuuQDDeqkT+PziKGMgE+0MCCtcKbROzocGBG1meBLl2FotlRwf4gAzbQ==}
+    peerDependencies:
+      prop-types: ^15.0.0
+      react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      '@babel/runtime': 7.16.5
+      prop-types: 15.7.2
+      react: 16.14.0
+      tiny-warning: 1.0.3
+    dev: false
+
   /mini-create-react-context/0.4.1_prop-types@15.7.2+react@17.0.2:
     resolution: {integrity: sha512-YWCYEmd5CQeHGSAKrYvXgmzzkrvssZcuuQDDeqkT+PziKGMgE+0MCCtcKbROzocGBG1meBLl2FotlRwf4gAzbQ==}
     peerDependencies:
@@ -4982,6 +5002,21 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
+  /react-router-dom/5.3.0_react@16.14.0:
+    resolution: {integrity: sha512-ObVBLjUZsphUUMVycibxgMdh5jJ1e3o+KpAZBVeHcNQZ4W+uUGGWsokurzlF4YOldQYRQL4y6yFRWM4m3svmuQ==}
+    peerDependencies:
+      react: '>=15'
+    dependencies:
+      '@babel/runtime': 7.16.5
+      history: 4.10.1
+      loose-envify: 1.4.0
+      prop-types: 15.7.2
+      react: 16.14.0
+      react-router: 5.2.1_react@16.14.0
+      tiny-invariant: 1.2.0
+      tiny-warning: 1.0.3
+    dev: false
+
   /react-router-dom/5.3.0_react@17.0.2:
     resolution: {integrity: sha512-ObVBLjUZsphUUMVycibxgMdh5jJ1e3o+KpAZBVeHcNQZ4W+uUGGWsokurzlF4YOldQYRQL4y6yFRWM4m3svmuQ==}
     peerDependencies:
@@ -4993,6 +5028,24 @@ packages:
       prop-types: 15.7.2
       react: 17.0.2
       react-router: 5.2.1_react@17.0.2
+      tiny-invariant: 1.2.0
+      tiny-warning: 1.0.3
+    dev: false
+
+  /react-router/5.2.1_react@16.14.0:
+    resolution: {integrity: sha512-lIboRiOtDLFdg1VTemMwud9vRVuOCZmUIT/7lUoZiSpPODiiH1UQlfXy+vPLC/7IWdFYnhRwAyNqA/+I7wnvKQ==}
+    peerDependencies:
+      react: '>=15'
+    dependencies:
+      '@babel/runtime': 7.16.5
+      history: 4.10.1
+      hoist-non-react-statics: 3.3.2
+      loose-envify: 1.4.0
+      mini-create-react-context: 0.4.1_prop-types@15.7.2+react@16.14.0
+      path-to-regexp: 1.8.0
+      prop-types: 15.7.2
+      react: 16.14.0
+      react-is: 16.13.1
       tiny-invariant: 1.2.0
       tiny-warning: 1.0.3
     dev: false
@@ -5453,6 +5506,22 @@ packages:
   /signal-exit/3.0.6:
     resolution: {integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==}
     dev: true
+
+  /single-spa-react/4.6.0_c71603448fee12e2ff1b04d9f4ec5cbd:
+    resolution: {integrity: sha512-yubpir3cQ38p6Kb+bd85D7KrXK89fyEJIsBBQQRG8T0vZK6K4+uO50OgYAKTDLnHlk5qbtBYcfiD0Y0nd07VWQ==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: '*'
+    dependencies:
+      '@types/react': 17.0.37
+      '@types/react-dom': 17.0.11
+      react: 16.14.0
+    dev: false
+
+  /single-spa/5.9.3:
+    resolution: {integrity: sha512-qMGraRzIBsodV6569Fob4cQ4/yQNrcZ5Achh3SAQDljmqUtjAZ7BAA7GAyO/l5eizb7GtTmVq9Di7ORyKw82CQ==}
+    dev: false
 
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
