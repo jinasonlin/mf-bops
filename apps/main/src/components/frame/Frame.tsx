@@ -95,7 +95,6 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
   }
 
   private setMenus = () => {
-    console.log('setMenus')
     const { hasMainMenu, menus, loginName, userName } = this.props;
     const {
       location: { pathname },

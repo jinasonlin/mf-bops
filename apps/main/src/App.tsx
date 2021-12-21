@@ -1,41 +1,37 @@
 import { registerApplication, start } from 'single-spa';
 import React, { useEffect, createRef } from 'react';
-// import { Layout } from 'antd';
 import Frame from './components/frame';
-// import App1 from 'app1/App';
 
 import './App.css';
 
-// const { Content } = Layout;
-
 const memus = [
   {
-    menuName: '一级菜单1',
+    menuName: 'app1',
     menuCode: '1',
     url: '/one',
     order: '0',
     icon: 'document',
     childrenMenuViewList: [
       {
-        menuName: '二级菜单 avatar',
+        menuName: 'avatar',
         menuCode: '1.1',
         url: '/one/avatar',
         order: '0',
       },
       {
-        menuName: '二级菜单 breadcrumb',
+        menuName: 'breadcrumb',
         menuCode: '1.2',
         url: '/one/breadcrumb',
         order: '0',
       },
       {
-        menuName: '二级菜单 modal',
+        menuName: 'modal',
         menuCode: '1.3',
         url: '/one/modal',
         order: '0',
       },
       {
-        menuName: '二级菜单 steps',
+        menuName: 'steps',
         menuCode: '1.4',
         url: '/one/steps',
         order: '0',
@@ -43,22 +39,22 @@ const memus = [
     ],
   },
   {
-    menuName: '一级菜单2',
+    menuName: 'app2',
     menuCode: '2',
     url: '/two',
     order: '0',
     icon: 'goods',
     childrenMenuViewList: [
       {
-        menuName: '二级菜单1',
+        menuName: 'auto-complete',
         menuCode: '1.1',
-        url: '/two/one',
+        url: '/two/auto-complete',
         order: '0',
       },
       {
-        menuName: '二级菜单2',
+        menuName: 'form',
         menuCode: '1.2',
-        url: '/two/two',
+        url: '/two/form',
         order: '0',
       },
     ],
@@ -78,6 +74,7 @@ export default () => {
 
   useEffect(() => {
     registerApplication('app1', () => import ('app1/App'), pathPrefix('/one'), { domElement: dom.current })
+    registerApplication('app2', () => import ('app2/App'), pathPrefix('/two'), { domElement: dom.current })
 
     start();
   }, []);
@@ -85,11 +82,6 @@ export default () => {
   return (
     <Frame userName="linqun" menus={memus}>
       <div ref={dom} />
-      {/* <Layout>
-        <Content>
-          <App1 />
-        </Content>
-      </Layout> */}
     </Frame>
   );
 };

@@ -3,29 +3,23 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const Avatar = lazy(() => import('./components/Avatar'));
-const Breadcrumb = lazy(() => import('./components/Breadcrumb'));
-const Modal = lazy(() => import('./components/Modal'));
-const Steps = lazy(() => import('./components/Steps'));
+const AutoComplete = lazy(() => import('./components/AutoComplete'));
+const Form = lazy(() => import('./components/Form'));
+const Modal = lazy(() => import('app1/components/Modal'));
 
 const App = () => {
-  console.log('app1 react', React.version);
+  console.log('app2 react', React.version);
 
   return (
     <Suspense fallback={null}>
       <Router>
         <Switch>
-          <Route path="/one/avatar">
-            <Avatar />
+          <Route path="/two/auto-complete">
+            <AutoComplete />
           </Route>
-          <Route path="/one/breadcrumb">
-            <Breadcrumb />
-          </Route>
-          <Route path="/one/modal">
+          <Route path="/two/form">
+            <Form />
             <Modal />
-          </Route>
-          <Route path="/one/steps">
-            <Steps />
           </Route>
         </Switch>
       </Router>

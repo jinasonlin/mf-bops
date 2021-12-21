@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3002/',
+    publicPath: 'http://localhost:3003/',
     clean: true,
   },
   resolve: {
@@ -36,11 +36,13 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app1',
+      name: 'app2',
+      remotes: {
+        app1: 'app1@http://localhost:3002/remoteEntry.js',
+      },
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
-        './components/Modal': './src/components/Modal',
       },
       shared: {
         react: {
@@ -59,7 +61,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3002,
+    port: 3003,
     historyApiFallback: true,
   },
 };

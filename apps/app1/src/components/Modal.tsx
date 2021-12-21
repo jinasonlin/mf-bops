@@ -20,9 +20,9 @@ export default () => {
   return (
     <div>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+        Open Modal | from app1
       </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Basic Modal | from app1" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
