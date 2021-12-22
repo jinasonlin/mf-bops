@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3002/',
+    publicPath: 'http://localhost:3001/',
     clean: true,
   },
   resolve: {
@@ -59,7 +59,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3002,
+    port: 3001,
     historyApiFallback: true,
   },
 };

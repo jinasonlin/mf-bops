@@ -20,7 +20,7 @@ export default () => {
   return (
     <div>
       <Button type="primary" onClick={showModal}>
-        Open Modal | from app1
+        这个组件来自 app1，点它试试效果
       </Button>
       <Modal title="Basic Modal | from app1" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
         <p>Some contents...</p>

@@ -57,6 +57,12 @@ const memus = [
         url: '/two/form',
         order: '0',
       },
+      {
+        menuName: 'parcel',
+        menuCode: '1.3',
+        url: '/two/parcel',
+        order: '0',
+      },
     ],
   },
 ];

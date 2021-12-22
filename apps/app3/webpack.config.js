@@ -1,11 +1,10 @@
 const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const { dependencies } = require('./package.json')
 
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'http://localhost:3003/',
     clean: true,
   },
   resolve: {
@@ -14,16 +13,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jpg|png|gif|jpeg|svg)$/,
+        test: /\.(jpg|png|gif|jpeg)$/,
         loader: 'url-loader',
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(jsx?|tsx?)$/,
@@ -41,21 +36,11 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'main',
-      remotes: {
-        app1: 'app1@http://localhost:3001/remoteEntry.js',
-        app2: 'app2@http://localhost:3002/remoteEntry.js',
-      },
-      shared: {
-        react: {
-          singleton: true,
-        },
-        'react-dom': {
-          singleton: true,
-        },
-        'react-router-dom': {
-          singleton: true,
-        },
+      name: 'app3',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './App': './src/App',
+        './AppParcelConfig': './src/App.ParcelConfig',
       },
     }),
     new HtmlWebpackPlugin({
@@ -63,7 +48,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3000,
+    port: 3003,
     historyApiFallback: true,
   },
 };

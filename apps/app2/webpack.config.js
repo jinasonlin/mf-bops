@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   output: {
-    publicPath: 'http://localhost:3003/',
+    publicPath: 'http://localhost:3002/',
     clean: true,
   },
   resolve: {
@@ -38,7 +38,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'app2',
       remotes: {
-        app1: 'app1@http://localhost:3002/remoteEntry.js',
+        app1: 'app1@http://localhost:3001/remoteEntry.js',
+        app3: 'app3@http://localhost:3003/remoteEntry.js',
       },
       filename: 'remoteEntry.js',
       exposes: {
@@ -61,7 +62,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3003,
+    port: 3002,
     historyApiFallback: true,
   },
 };

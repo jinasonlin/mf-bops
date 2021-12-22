@@ -1,4 +1,5 @@
 import singleSpaReact from 'single-spa-react';
+import Parcel from 'single-spa-react/parcel';
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -20,6 +21,15 @@ const App = () => {
           <Route path="/two/form">
             <Form />
             <Modal />
+          </Route>
+          <Route path="/two/parcel">
+            <Parcel
+              config={() =>
+                import('app3/AppParcelConfig').then((_) => {
+                  return _.default;
+                })
+              }
+            />
           </Route>
         </Switch>
       </Router>
