@@ -1,5 +1,5 @@
 import { registerApplication, start } from 'single-spa';
-import React, { useEffect, createRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Frame from './components/frame';
 
 import './App.css';
@@ -76,7 +76,7 @@ const pathPrefix = (prefix: string) => {
 export default () => {
   console.log('main react', React.version);
 
-  const dom = createRef<HTMLDivElement>();
+  const dom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     registerApplication('app1', () => import ('app1/App'), pathPrefix('/one'), { domElement: dom.current })
