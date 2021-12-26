@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie } from '@ant-design/charts';
+import { Rose } from '@ant-design/charts';
 
 export default () => {
   const data = [
@@ -29,25 +29,15 @@ export default () => {
     },
   ];
   const config: any = {
-    appendPadding: 10,
     data,
-    angleField: 'value',
-    colorField: 'type',
+    xField: 'type',
+    yField: 'value',
+    seriesField: 'type',
     radius: 0.9,
-    label: {
-      type: 'inner',
-      offset: '-30%',
-      content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
-      style: {
-        fontSize: 14,
-        textAlign: 'center',
-      },
+    legend: {
+      position: 'bottom',
     },
-    interactions: [
-      {
-        type: 'element-active',
-      },
-    ],
+    padding: [50, 20, 20, 20],
   };
-  return <Pie {...config} />;
+  return <Rose {...config} />;
 };

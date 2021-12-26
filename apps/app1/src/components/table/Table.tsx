@@ -75,5 +75,9 @@ const data = [
 ];
 
 export default () => {
-  return <Table columns={columns} dataSource={data} />;
-}
+  return (
+    <div className="app1-table">
+      <Table columns={columns} dataSource={data} />
+    </div>
+  );
+};

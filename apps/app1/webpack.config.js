@@ -45,6 +45,7 @@ module.exports = {
         './components/Modal': './src/components/Modal',
         './components/Column': './src/components/Column',
         './components/Pie': './src/components/Pie',
+        './components/Rose': './src/components/Rose',
       },
       shared: {
         react: {

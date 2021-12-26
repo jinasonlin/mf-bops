@@ -36,7 +36,7 @@ export default () => {
       sales: 38,
     },
   ];
-  const config = {
+  const config: any = {
     data,
     xField: 'type',
     yField: 'sales',
@@ -64,6 +64,7 @@ export default () => {
         alias: '销售额',
       },
     },
+    padding: 30,
   };
   return <Column {...config} />;
 };
