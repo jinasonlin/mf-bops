@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 
-const Demo = () => {
+export default () => {
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -47,6 +47,4 @@ const Demo = () => {
       </Form.Item>
     </Form>
   );
-};
-
-export default Demo;
+}

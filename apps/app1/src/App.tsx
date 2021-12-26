@@ -3,10 +3,12 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const Avatar = lazy(() => import('./components/Avatar'));
-const Breadcrumb = lazy(() => import('./components/Breadcrumb'));
-const Modal = lazy(() => import('./components/Modal'));
-const Steps = lazy(() => import('./components/Steps'));
+import 'antd/dist/antd.css';
+
+const Avatar = lazy(() => import('./components/avatar'));
+const Button = lazy(() => import('./components/button'));
+const Form = lazy(() => import('./components/form'));
+const Table = lazy(() => import('./components/table'));
 
 const App = () => {
   console.log('app1 react', React.version);
@@ -18,14 +20,14 @@ const App = () => {
           <Route path="/one/avatar">
             <Avatar />
           </Route>
-          <Route path="/one/breadcrumb">
-            <Breadcrumb />
+          <Route path="/one/button">
+            <Button />
           </Route>
-          <Route path="/one/modal">
-            <Modal />
+          <Route path="/one/form">
+            <Form />
           </Route>
-          <Route path="/one/steps">
-            <Steps />
+          <Route path="/one/table">
+            <Table />
           </Route>
         </Switch>
       </Router>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Drawer, Button } from 'antd';
 
+import 'antd/dist/antd.css';
+
 const App: React.FC = () => {
   console.log('app3 react', React.version);
 

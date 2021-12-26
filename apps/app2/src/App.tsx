@@ -4,9 +4,11 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const AutoComplete = lazy(() => import('./components/AutoComplete'));
-const Form = lazy(() => import('./components/Form'));
-const Modal = lazy(() => import('app1/components/Modal'));
+
+const Avatar = lazy(() => import('./components/avatar'));
+const Button = lazy(() => import('./components/button'));
+const Form = lazy(() => import('./components/form'));
+const Table = lazy(() => import('./components/table'));
 
 const App = () => {
   console.log('app2 react', React.version);
@@ -15,12 +17,17 @@ const App = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
-          <Route path="/two/auto-complete">
-            <AutoComplete />
+          <Route path="/two/avatar">
+            <Avatar />
+          </Route>
+          <Route path="/two/button">
+            <Button />
           </Route>
           <Route path="/two/form">
             <Form />
-            <Modal />
+          </Route>
+          <Route path="/two/table">
+            <Table />
           </Route>
           <Route path="/two/parcel">
             <Parcel

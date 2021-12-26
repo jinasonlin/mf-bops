@@ -19,21 +19,27 @@ const memus = [
         order: '0',
       },
       {
-        menuName: 'breadcrumb',
+        menuName: 'button',
         menuCode: '1.2',
-        url: '/one/breadcrumb',
+        url: '/one/button',
         order: '0',
       },
       {
-        menuName: 'modal',
+        menuName: 'form',
         menuCode: '1.3',
-        url: '/one/modal',
+        url: '/one/form',
         order: '0',
       },
       {
-        menuName: 'steps',
+        menuName: 'table',
         menuCode: '1.4',
-        url: '/one/steps',
+        url: '/one/table',
+        order: '0',
+      },
+      {
+        menuName: 'parcel (app2)',
+        menuCode: '2.5',
+        url: '/two/parcel',
         order: '0',
       },
     ],
@@ -46,20 +52,32 @@ const memus = [
     icon: 'goods',
     childrenMenuViewList: [
       {
-        menuName: 'auto-complete',
-        menuCode: '1.1',
-        url: '/two/auto-complete',
+        menuName: 'avatar',
+        menuCode: '2.1',
+        url: '/two/avatar',
+        order: '0',
+      },
+      {
+        menuName: 'button',
+        menuCode: '2.2',
+        url: '/two/button',
         order: '0',
       },
       {
         menuName: 'form',
-        menuCode: '1.2',
+        menuCode: '2.3',
         url: '/two/form',
         order: '0',
       },
       {
+        menuName: 'table',
+        menuCode: '2.4',
+        url: '/two/table',
+        order: '0',
+      },
+      {
         menuName: 'parcel',
-        menuCode: '1.3',
+        menuCode: '2.5',
         url: '/two/parcel',
         order: '0',
       },
@@ -87,7 +105,7 @@ export default () => {
 
   return (
     <Frame userName="linqun" menus={memus}>
-      <div ref={dom} />
+      <div className="main-container" ref={dom} />
     </Frame>
   );
 };

@@ -1,0 +1,8 @@
+.app1-avatar-demo .ant-avatar {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+.app1-avatar-demo .ant-row-rtl .ant-avatar {
+  margin-right: 0;
+  margin-left: 16px;
+}
