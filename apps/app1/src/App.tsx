@@ -9,6 +9,8 @@ const Avatar = lazy(() => import('./components/avatar'));
 const Button = lazy(() => import('./components/button'));
 const Form = lazy(() => import('./components/form'));
 const Table = lazy(() => import('./components/table'));
+const Column = lazy(() => import('./components/Column'));
+const Pie = lazy(() => import('./components/Pie'));
 
 const App = () => {
   console.log('app1 react', React.version);
@@ -28,6 +30,12 @@ const App = () => {
           </Route>
           <Route path="/one/table">
             <Table />
+          </Route>
+          <Route path="/one/column">
+            <Column />
+          </Route>
+          <Route path="/one/pie">
+            <Pie />
           </Route>
         </Switch>
       </Router>

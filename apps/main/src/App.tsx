@@ -1,4 +1,4 @@
-import { registerApplication, start } from 'single-spa';
+import { registerApplication, navigateToUrl, start } from 'single-spa';
 import React, { useEffect, useRef } from 'react';
 import Frame from './components/frame';
 
@@ -97,8 +97,11 @@ export default () => {
   const dom = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    registerApplication('dashboard', () => import ('dashboard/App'), pathPrefix('/dashboard'), { domElement: dom.current })
     registerApplication('app1', () => import ('app1/App'), pathPrefix('/one'), { domElement: dom.current })
     registerApplication('app2', () => import ('app2/App'), pathPrefix('/two'), { domElement: dom.current })
+
+    // navigateToUrl('/dashboard');
 
     start();
   }, []);

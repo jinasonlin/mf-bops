@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import { Content, Header, Layout, Sider } from '../layout';
 import Nav from '../nav';
@@ -210,10 +210,10 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
           />
           <Sider className={cls}>
             <div className={`${prefix}-sider-logo`}>
-              <a href="/">
+              <Link to="/dashboard">
                 {logo || <img src={defaultLogo} alt="logo" />}
                 {!collapsed && <h1>{systemName}</h1>}
-              </a>
+              </Link>
             </div>
             {hasMainMenu && (
               <Nav menus={navMenus} />

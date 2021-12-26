@@ -40,7 +40,11 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
+        './components/Form': './src/components/form',
+        './components/Table': './src/components/table',
         './components/Modal': './src/components/Modal',
+        './components/Column': './src/components/Column',
+        './components/Pie': './src/components/Pie',
       },
       shared: {
         react: {
