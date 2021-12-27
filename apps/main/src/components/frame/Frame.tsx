@@ -70,6 +70,8 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
     systemName: '健康险运营系统',
   };
 
+  resizeTimer?: number;
+
   constructor(props: BopsFrameProps) {
     super(props);
     this.state = {
@@ -92,6 +94,16 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
   componentWillUnmount() {
     window.removeEventListener('popstate', this.setMenus);
     window.removeEventListener('hashchange', this.setMenus);
+  }
+
+  private triggerResize(timeout = 300) {
+    if (this.resizeTimer) {
+      clearTimeout(this.resizeTimer);
+    }
+    this.resizeTimer = window.setTimeout(() => {
+      this.resizeTimer = undefined;
+      window.dispatchEvent(new Event('resize'));
+    }, timeout);
   }
 
   private setMenus = () => {
@@ -129,6 +141,8 @@ export default class Frame extends Component<BopsFrameProps, BopsFrameStates> {
   private handleMenuToggle = (collapsed: boolean) => {
     this.setState({
       collapsed,
+    }, () => {
+      this.triggerResize();
     });
     if (collapsed) {
       localStorage.menuStatus = 'fold';

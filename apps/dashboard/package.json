@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack build --mode production",
-    "start": "serve dist -p 3100"
+    "start": "serve dist -s -p 3100"
   },
   "keywords": [],
   "author": "Lin Qun",
